@@ -65,7 +65,6 @@ export class AppComponent  implements OnInit{
 
 
   editBookController(book:Book) {
-    console.log(book);
     this.dataService.editBookService(this.book)
     .subscribe
       (
@@ -115,6 +114,7 @@ startEdit(id: string, nameBook: string, descriptionBook: string) {
     
   dialogRef.afterClosed().subscribe(result => {
     if (result === 1) {
+      console.log(this.editBookController(this.dataService.getDialogData()));
       this.editBookController(this.dataService.getDialogData());
 
     }
