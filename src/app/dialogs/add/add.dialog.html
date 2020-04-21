@@ -6,14 +6,14 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <textarea matInput #input class="form-control" placeholder="Title" [(ngModel)]="data.nameBook" name="title" required ></textarea>
+        <textarea matInput #input class="form-control" placeholder="Title" [(ngModel)]="data.nomLivre" name="title" required ></textarea>
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Description" [(ngModel)]="data.descriptionBook" name="description"  required >
+        <input matInput #inputstate class="form-control" placeholder="Description" [(ngModel)]="data.descriptionLivre" name="description"  required >
         <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
     </div>

@@ -39,6 +39,11 @@ export class AppComponent  implements OnInit{
         this.bookToAdd =  new Book();
     }
 
+    applyFilter(filterValue: string) {
+     this.dataService.getOneBookervice(filterValue);
+    }
+
+
   ngOnInit() {
     this.getAllBooksController();
   }
@@ -54,7 +59,6 @@ export class AppComponent  implements OnInit{
 
   addLivreController() {
     
-    console.log(this.bookToAdd);
     this.dataService.addBookService(this.bookToAdd)
     .subscribe
       (
@@ -64,8 +68,8 @@ export class AppComponent  implements OnInit{
   }
 
 
-  editBookController(book:Book) {
-    this.dataService.editBookService(this.book)
+  editBookController() {
+    this.dataService.editBookService(this.bookToUpdate)
     .subscribe
       (
       res => {
@@ -73,7 +77,7 @@ export class AppComponent  implements OnInit{
           this.getAllBooksController();
         } else {
         }
-      });
+      });    
   }
 
   // Supprimer une livre
@@ -107,29 +111,29 @@ addNew() {
   });
 }
 
-startEdit(id: string, nameBook: string, descriptionBook: string) {
+startEdit(id: string, nomLivre: string, descriptionLivre: string) {
   const dialogRef = this.dialog.open(EditDialogComponent, {
-    data: {id: id, nameBook: nameBook, descriptionBook: descriptionBook}
+    data: {id: id, nomLivre: nomLivre, descriptionLivre: descriptionLivre}
   });
     
   dialogRef.afterClosed().subscribe(result => {
     if (result === 1) {
-      console.log(this.editBookController(this.dataService.getDialogData()));
-      this.editBookController(this.dataService.getDialogData());
+      this.bookToUpdate = this.dataService.getDialogData();
+      this.editBookController();
 
     }
   });
  
 }
 
-deleteItem(id: String, nameBook: string, descriptionBook: string) {
+deleteItem(id: String, nomLivre: string, descriptionLivre: string) {
   const dialogRef = this.dialog.open(DeleteDialogComponent, {
-    data: {id: id, nameBook: nameBook, descriptionBook: descriptionBook}
+    data: {id: id, nomLivre: nomLivre, descriptionLivre: descriptionLivre}
   });
 
   dialogRef.afterClosed().subscribe(result => {
     if (result === 1) {
-      this.deleteLivreController(nameBook);
+      this.deleteLivreController(nomLivre);
     }
   });
 }

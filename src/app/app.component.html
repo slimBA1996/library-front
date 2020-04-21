@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>Library Management System 1</span>
+  <span>Library Management System </span>
  
 </mat-toolbar>
 
@@ -7,7 +7,7 @@
 
   <div class="form">
     <mat-form-field floatPlaceholder="never" color="accent">
-      <input matInput #filter placeholder="Filter books">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter books">
     </mat-form-field>
   </div>
 
@@ -54,7 +54,10 @@
 
 
 
-
+  
   
 </div>
 
+<footer>
+  <p>© 2020 Smartgraphe</p>
+</footer>

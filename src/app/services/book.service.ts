@@ -33,8 +33,8 @@ export class DataService {
   }
 
   // Retourne un seul livre par son nomLivre : Livre
-  getOneBookervice(nameBook): Observable<Book> {
-    return this.http.get<Book>(this.serviceUrl + '/' + nameBook, this.httpOptions);
+  getOneBookervice(nomLivre): Observable<Book> {
+    return this.http.get<Book>(this.serviceUrl + '/' + nomLivre, this.httpOptions);
   }
 
   // Retourne le livre créée : Livre
@@ -48,8 +48,8 @@ export class DataService {
   }
 
   // Ne retourne rien
-  deleteBookService(nameBook) {
-    return this.http.delete<any>(this.serviceUrl + '/' + nameBook, this.httpOptions);
+  deleteBookService(nomLivre) {
+    return this.http.delete<any>(this.serviceUrl + '/' + nomLivre, this.httpOptions);
   }
 
   getDialogData() {
