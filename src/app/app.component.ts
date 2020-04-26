@@ -43,6 +43,25 @@ export class AppComponent  implements OnInit{
      this.dataService.getOneBookervice(filterValue);
     }
 
+  submit() {
+      // emppty stuff
+      }
+
+  confirmAdd(): void {
+    console.log(this.book);
+    this.addLivreController1();
+    }
+
+    addLivreController1() {
+    
+      this.dataService.addBookService(this.book)
+      .subscribe
+        (
+        res => {
+          this.getAllBooksController();
+        });
+    }
+
 
   ngOnInit() {
     this.getAllBooksController();

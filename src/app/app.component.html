@@ -1,8 +1,41 @@
+
+
+
+
 <mat-toolbar color="primary">
   <span>Library Management System </span>
  
 </mat-toolbar>
 
+<section>
+<div class="container">
+  <h3 mat-dialog-title>Add new Book</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <textarea matInput #input class="form-control" placeholder="Title" [(ngModel)]="book.nomLivre" name="title" required ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Description" [(ngModel)]="book.descriptionLivre" name="description"  required >
+      </mat-form-field>
+    </div>
+
+    
+
+    <div mat-dialog-actions>
+      <button mat-button [type]="submit" [disabled]="!formControl.valid"  (click)="confirmAdd()">Save</button>
+    </div>
+  </form>
+</div>
+</section>
+
+<article>
 <div class="container mat-elevation-z8">
 
   <div class="form">
@@ -57,7 +90,7 @@
   
   
 </div>
-
+</article>
 <footer>
   <p>© 2020 Smartgraphe</p>
 </footer>
