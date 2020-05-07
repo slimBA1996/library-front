@@ -1,12 +1,24 @@
 version: '3.1'
 services:
-  mongo:
+  front-prod:
+    image: slim1996/repository_front:latest
+    container_name: container-front-prod
+    depends_on:
+      - rest-prod
+    ports:
+      - 80:80
+
+  rest-prod:
+    image: slim1996/repository_back:latest
+    container_name: container-rest-prod
+    depends_on:
+      - db-prod
+    ports:
+      - 8000:8000
+
+  db-prod:
     image: mongo
     container_name: mongo-container
-    volumes:
-      - mymongo-data:/data/db
     restart: always
     ports:
       - 27017:27017
-volumes:
-  mymongo-data:
