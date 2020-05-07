@@ -2,7 +2,7 @@ version: '3.4'
 services:
 
   front-prod:
-    image: slimBA1996/repository_front:latest
+    image: slim1996/repository_front:latest
     container_name: container-front-prod
     depends_on:
       - rest-prod
@@ -10,17 +10,18 @@ services:
       - 80:80
 
   rest-prod:
-    image: slimBA1996/repository_back:latest
+    image: slim1996/repository_back:latest
     container_name: container-rest-prod
     depends_on:
       - db-prod
     ports:
-      - 8080:8080
+      - 8000:8000
 
   db-prod:
     image: mongo
     container_name: container-db-prod
+    restart: always
     ports:
-      - 8081:8081
+      - 27017:27017
 
 
